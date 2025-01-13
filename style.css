@@ -1,0 +1,117 @@
+/* ปรับสไตล์ให้ navbar เป็นแบบแนวนอน */
+nav {
+    background-color: #333;
+    /* สีพื้นหลัง */
+    padding: 10px 0;
+    /* ระยะห่างของ navbar */
+    text-align: center;
+    /* จัดตำแหน่งเนื้อหาให้อยู่กลาง */
+}
+
+nav ul {
+    list-style: none;
+    /* ไม่แสดงจุดหน้า item */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    /* ทำให้รายการแสดงเป็นแถว */
+    margin-right: 20px;
+    /* ระยะห่างระหว่างรายการ */
+}
+
+nav ul li a {
+    color: white;
+    /* สีข้อความ */
+    text-decoration: none;
+    /* ลบเส้นใต้ */
+    font-size: 16px;
+    /* ขนาดฟอนต์ */
+    padding: 8px 12px;
+    /* ระยะห่างภายใน */
+    display: inline-block;
+    /* ทำให้ link เป็นบล็อก */
+    transition: background-color 0.3s;
+    /* การเปลี่ยนแปลงสีพื้นหลังเมื่อ hover */
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+    /* สีพื้นหลังเมื่อ hover */
+    border-radius: 5px;
+    /* ทำมุมมนให้กับปุ่ม */
+}
+
+/* เพิ่มการจัดรูปแบบให้ navbar ให้เป็นแบบ responsive */
+@media (max-width: 768px) {
+    nav ul {
+        text-align: left;
+        /* จัดรายการให้อยู่ทางซ้าย */
+    }
+
+    nav ul li {
+        display: block;
+        /* ให้รายการแสดงในแต่ละแถว */
+        margin-right: 0;
+        /* ลบระยะห่างด้านขวา */
+        margin-bottom: 10px;
+        /* เพิ่มระยะห่างด้านล่าง */
+    }
+
+    nav ul li a {
+        font-size: 14px;
+        /* ขนาดฟอนต์เล็กลงสำหรับมือถือ */
+    }
+}
+
+/* สไตล์สำหรับ container ของรูปภาพ */
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* ให้รูปภาพไปลงแถวถัดไปเมื่อเต็มแถว */
+    gap: 20px;
+    /* ระยะห่างระหว่างรูปภาพ */
+    justify-content: center;
+    /* จัดกลางรายการ */
+}
+
+/* สไตล์สำหรับแต่ละรูปภาพ */
+.image-item {
+    width: 300px;
+    /* กำหนดความกว้างให้รูปภาพ */
+    text-align: center;
+    /* จัดเนื้อหาภายในให้เป็นกลาง */
+}
+
+.image-item img {
+    width: 100%;
+    /* ให้รูปภาพขยายเต็มความกว้างของ .image-item */
+    border-radius: 8px;
+    /* มุมมนให้กับรูปภาพ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* เพิ่มเงาให้กับรูปภาพ */
+}
+
+.image-item button {
+    margin-top: 10px;
+    /* ระยะห่างระหว่างรูปภาพกับปุ่ม */
+    padding: 8px 12px;
+    /* ขนาดของปุ่ม */
+    background-color: #333;
+    /* สีพื้นหลังของปุ่ม */
+    color: white;
+    /* สีข้อความในปุ่ม */
+    border: none;
+    border-radius: 4px;
+    /* ทำมุมมน */
+    cursor: pointer;
+    /* ให้ cursor เป็น pointer เมื่อ hover */
+    transition: background-color 0.3s;
+}
+
+.image-item button:hover {
+    background-color: #575757;
+    /* เปลี่ยนสีเมื่อ hover */
+}
