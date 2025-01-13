@@ -125,7 +125,7 @@ function addWatermark($imagePath, $watermarkPath)
             <option value="Portrait">Portrait</option>
             <option value="Architecture">Architecture</option>
             <option value="Animals">Animals</option>
-            <option value="Other">Otherdadwdasdads</option>
+            <option value="Other">Other</option>
         </select><br>
 
         <label for="image">Upload Image:</label>
