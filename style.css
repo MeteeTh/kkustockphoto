@@ -3,7 +3,13 @@ html {
     font-family: 'kanit';
 
 }
-
+/* CSS สำหรับสถานะการเข้าสู่ระบบ */
+.login-status {
+    color: green;
+    font-weight: bold;
+    margin-left: 10px;
+    display: inline-block;
+}
 .main-content {
     margin-top: 80px;
     /* ปรับตามความสูงของ navbar */
@@ -93,22 +99,21 @@ nav ul li a:hover {
 
 .image-container {
     column-count: 3;
-    /* จำนวนคอลัมน์ */
-    column-gap: 10px;
+    column-gap: 5px;
     /* ช่องว่างระหว่างคอลัมน์ */
 
 }
 
 .image-item {
     break-inside: avoid;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     /* ช่องว่างระหว่างรูปในแนวตั้ง */
 }
 
 .image-item img {
     width: 100%;
     height: auto;
-    /* border-radius: 5px; */
+    border-radius: 5px;
 }
 
 /* 
@@ -150,7 +155,7 @@ nav ul li a:hover {
 
 
 .image:hover {
-    transform: scale(.90);
+    transform: scale(.98);
 
 }
 
