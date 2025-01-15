@@ -28,7 +28,7 @@ def generate_metadata(image_dir, category, selected_keys):
         writer = csv.writer(file)
 
         # สร้าง Header โดยเพิ่มข้อมูล Width และ Height
-        header = ["filename", "filepath", "category", "width", "height"] + [get_exif_name(key) for key in selected_keys]
+        header = ["filename", "filepath", "category", "width", "height" ,"DateTimeDigitized"] + [get_exif_name(key) for key in selected_keys]
         writer.writerow(header)
 
         # วนลูปไฟล์ในโฟลเดอร์
@@ -47,11 +47,13 @@ def generate_metadata(image_dir, category, selected_keys):
                         if exif_data:
                             for key in selected_keys:
                                 exif_values[key] = exif_data.get(int(key, 16), "Not Available")
+                                # ดึง DateTimeDigitized (ถ้ามีใน EXIF)
+                            datetime_digitized = exif_data.get(0x9004, "Not Available")
                         else:
                             exif_values = {key: "Not Available" for key in selected_keys}
 
                     # สร้างแถวข้อมูล
-                    row = [file, f"images/{category}/{folder_name}/{file}", category, width, height] + [exif_values[key] for key in selected_keys]
+                    row = [file, f"images/{category}/{folder_name}/{file}", category, width, height, datetime_digitized] + [exif_values[key] for key in selected_keys]
                     writer.writerow(row)
 
     print(f"Metadata CSV has been created: {output_csv}")
@@ -70,11 +72,7 @@ def choose_options():
 
     categories = ["Nature", "Urban", "Portrait", "Architecture", "Animals", "Other"]
     exif_keys = {
-        "0x9003": "DateTimeOriginal",
-        "0x9004": "DateTimeDigitized",
-        "0x010F": "Make",
         "0x0110": "Model",
-        "0x0132": "ModifyDate",
         "0x829A": "ExposureTime",
         "0x829D": "FNumber",
         "0x8827": "ISOSpeedRatings"
@@ -97,7 +95,7 @@ def choose_options():
 
     for hex_key, description in exif_keys.items():
         chk = ttk.Checkbutton(window, text=f"{description} ({hex_key})", \
-                              command=lambda k=hex_key: toggle_key(k))
+                    command=lambda k=hex_key: toggle_key(k))
         chk.pack(anchor="w", padx=20)
 
     def on_ok_button_click():
@@ -115,3 +113,9 @@ def choose_options():
 
 # เรียกใช้งานฟังก์ชัน
 choose_options()
+
+
+
+
+#Column names ใส่ตอน import csv ใน phpMyAdmin
+#filename, filepath, category, width, height, DateTimeDigitized, Model, ExposureTime, FNumber, ISOSpeedRatings

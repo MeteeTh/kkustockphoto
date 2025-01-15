@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload with Progress</title>
+    <style>
+        /* Style สำหรับ Progress Bar */
+        .progress-container {
+            width: 100%;
+            background: #f3f3f3;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            height: 20px;
+            width: 0;
+            background: green;
+            text-align: center;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Upload Files with Progress</h2>
+
+    <!-- ฟอร์มอัปโหลด -->
+    <form id="uploadForm" enctype="multipart/form-data">
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category"><br><br>
+
+        <label for="images">Select Images:</label>
+        <input type="file" id="images" name="images[]" multiple><br><br>
+
+        <button type="submit">Upload</button>
+    </form>
+
+    <!-- Progress Bar -->
+    <div id="progressContainer"></div>
+    <!-- Status Message -->
+    <div id="statusMessage"></div>
+
+    <script src="upload.js"></script>
+</body>
+
+</html>

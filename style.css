@@ -1,11 +1,26 @@
+body,
+html {
+    font-family: 'kanit';
+
+}
+
+.main-content {
+    margin-top: 80px;
+    /* ปรับตามความสูงของ navbar */
+}
+
 /* ปรับสไตล์ให้ navbar เป็นแบบแนวนอน */
 nav {
     background-color: #333;
-    /* สีพื้นหลัง */
     padding: 10px 0;
-    /* ระยะห่างของ navbar */
     text-align: center;
-    /* จัดตำแหน่งเนื้อหาให้อยู่กลาง */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+
 }
 
 nav ul {
@@ -46,72 +61,164 @@ nav ul li a:hover {
 
 /* เพิ่มการจัดรูปแบบให้ navbar ให้เป็นแบบ responsive */
 @media (max-width: 768px) {
-    nav ul {
-        text-align: left;
-        /* จัดรายการให้อยู่ทางซ้าย */
+
+    .navbar {
+        padding: 10px 15px;
     }
 
-    nav ul li {
-        display: block;
-        /* ให้รายการแสดงในแต่ละแถว */
-        margin-right: 0;
-        /* ลบระยะห่างด้านขวา */
-        margin-bottom: 10px;
-        /* เพิ่มระยะห่างด้านล่าง */
+    .main-content {
+        margin-top: 60px;
     }
 
-    nav ul li a {
-        font-size: 14px;
-        /* ขนาดฟอนต์เล็กลงสำหรับมือถือ */
-    }
 }
 
-/* สไตล์สำหรับ container ของรูปภาพ */
-.image-container {
+
+/* .image-container {
     display: flex;
     flex-wrap: wrap;
-    /* ให้รูปภาพไปลงแถวถัดไปเมื่อเต็มแถว */
-    gap: 20px;
-    /* ระยะห่างระหว่างรูปภาพ */
-    justify-content: center;
-    /* จัดกลางรายการ */
+    gap: 10px;
 }
 
-/* สไตล์สำหรับแต่ละรูปภาพ */
 .image-item {
     width: 300px;
-    /* กำหนดความกว้างให้รูปภาพ */
-    text-align: center;
-    /* จัดเนื้อหาภายในให้เป็นกลาง */
+    margin-bottom: 10px;
 }
 
 .image-item img {
     width: 100%;
-    /* ให้รูปภาพขยายเต็มความกว้างของ .image-item */
-    border-radius: 8px;
-    /* มุมมนให้กับรูปภาพ */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* เพิ่มเงาให้กับรูปภาพ */
+    height: auto;
+    border-radius: 5px;
+} */
+
+
+.image-container {
+    column-count: 3;
+    /* จำนวนคอลัมน์ */
+    column-gap: 10px;
+    /* ช่องว่างระหว่างคอลัมน์ */
+
 }
+
+.image-item {
+    break-inside: avoid;
+    margin-bottom: 10px;
+    /* ช่องว่างระหว่างรูปในแนวตั้ง */
+}
+
+.image-item img {
+    width: 100%;
+    height: auto;
+    /* border-radius: 5px; */
+}
+
+/* 
+.image-container {
+    column-width: 300px;
+    column-gap: 10px;
+}
+
+.image-item {
+    break-inside: avoid;
+    margin-bottom: 10px;
+}
+
+.image-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+} */
 
 .image-item button {
     margin-top: 10px;
-    /* ระยะห่างระหว่างรูปภาพกับปุ่ม */
     padding: 8px 12px;
-    /* ขนาดของปุ่ม */
     background-color: #333;
-    /* สีพื้นหลังของปุ่ม */
     color: white;
-    /* สีข้อความในปุ่ม */
     border: none;
     border-radius: 4px;
-    /* ทำมุมมน */
     cursor: pointer;
-    /* ให้ cursor เป็น pointer เมื่อ hover */
     transition: background-color 0.3s;
 }
 
 .image-item button:hover {
     background-color: #575757;
-    /* เปลี่ยนสีเมื่อ hover */
+}
+
+.image {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+
+.image:hover {
+    transform: scale(.90);
+
+}
+
+/* สไตล์สำหรับ modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* สีพื้นหลังโปร่งแสง */
+    display: flex;
+    justify-content: center;
+    /* จัดกึ่งกลางแนวนอน */
+    align-items: center;
+    /* จัดกึ่งกลางแนวตั้ง */
+}
+
+/* ปุ่มปิด */
+.modal .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* รูปภาพใน modal */
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Style สำหรับ Progress Bar */
+.progress-container {
+    width: 100%;
+    background: #f3f3f3;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    height: 20px;
+    width: 0;
+    background: green;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
 }
